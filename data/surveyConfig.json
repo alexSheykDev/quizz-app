@@ -1,0 +1,294 @@
+{
+  "questions": [
+    {
+      "id": "select-gender",
+      "answerId": "gender",
+      "question": "Select your gender:",
+      "type": "single-choice",
+      "options": [
+        { "label": "Female", "value": "female" },
+        { "label": "Male", "value": "male" }
+      ],
+      "next": "relationship-status",
+      "needContentReplacement": false
+    },
+    {
+      "id": "relationship-status",
+      "answerId": "relationshipStatus",
+      "question": "So we can get to know you better, tell us about your relationship status.",
+      "type": "single-choice",
+      "options": [
+        { "label": "Single", "value": "single-problem" },
+        { "label": "In a relationship", "value": "in-a-relationship" }
+      ],
+      "nextDependencyId": "relationshipStatus",
+      "next": {
+        "in-a-relationship": "relationship-parent",
+        "single-problem": "single-parent"
+      },
+      "needContentReplacement": false
+    },
+    {
+      "id": "single-parent",
+      "answerId": "isSingleParent",
+      "question": "Are you a single parent?",
+      "type": "single-choice",
+      "options": [
+        { "label": "Yes", "value": "yes" },
+        { "label": "No", "value": "no" }
+      ],
+      "next": "describe-statement",
+      "needContentReplacement": false
+    },
+    {
+      "id": "describe-statement",
+      "answerId": "isHappyRelationshiop",
+      "question": "Single {gender} {who have children (if have children)} need a slightly different approach to improve their relationship. Which statement best describes you?",
+      "type": "single-choice",
+      "options": [
+        {
+          "label": "I’m very unhappy with how things are going in my relationship",
+          "value": "unhappy"
+        },
+        {
+          "label": "I’m unhappy with parts of my relationship, but some things are working well",
+          "value": "unhappy-partly"
+        },
+        {
+          "label": "I’m generally happy in my relationship",
+          "value": "happy"
+        }
+      ],
+      "next": "overthink-tend",
+      "needContentReplacement": true
+    },
+    {
+      "id": "overthink-tend",
+      "answerId": "isOverthinker",
+      "question": "Do you tend to overthink?",
+      "type": "single-choice",
+      "options": [
+        { "label": "Yes", "value": "yes" },
+        { "label": "No", "value": "no" }
+      ],
+      "next": "how-it-works",
+      "needContentReplacement": false
+    },
+    {
+      "id": "how-it-works",
+      "question": "So how does it work?",
+      "description": "We analyze hundreds of data points to create your unique astrological blueprint. This is combined with AI to tailor-make your astrological insights, based on your answers. We’re going to change your relationship with astrology.",
+      "type": "info",
+      "nextButton": "Next",
+      "nextDependencyId": "isOverthinker",
+      "next": {
+        "yes": "what-most-important",
+        "no": "is-emotional-control-tricky"
+      },
+      "needContentReplacement": false
+    },
+    {
+      "id": "what-most-important",
+      "answerId": "mostImportant",
+      "question": "What is most important to you?",
+      "type": "single-choice",
+      "options": [
+        { "label": "Success", "value": "success" },
+        { "label": "Romance", "value": "romance" },
+        { "label": "Stability", "value": "stability" },
+        { "label": "Freedom", "value": "freedom" }
+      ],
+      "next": "reference-question",
+      "needContentReplacement": false
+    },
+    {
+      "id": "is-emotional-control-tricky",
+      "answerId": "isEmotionalControlTricky",
+      "question": "Is emotional control tricky for you?",
+      "type": "single-choice",
+      "options": [
+        { "label": "Yes", "value": "yes" },
+        { "label": "Sometimes", "value": "sometimes" },
+        { "label": "Rarely", "value": "rarely" },
+        { "label": "Not at all", "value": "not" }
+      ],
+      "next": "reference-question",
+      "needContentReplacement": false
+    },
+    {
+      "id": "relationship-parent",
+      "answerId": "isParentInRelationship",
+      "question": "Are you a parent?",
+      "type": "single-choice",
+      "options": [
+        { "label": "Yes", "value": "yes" },
+        { "label": "No", "value": "no" }
+      ],
+      "next": "describe-relationship",
+      "needContentReplacement": false
+    },
+    {
+      "id": "describe-relationship",
+      "answerId": "describeRelationship",
+      "question": "{gender} {who have children (if have children)} need a slightly different approach to find their perfect partner. But first, how did you feel in your last relationship?",
+      "type": "single-choice",
+      "options": [
+        {
+          "label": "I was unhappy with low things were going in my relationship",
+          "value": "unhappy"
+        },
+        {
+          "label": "I was unhappy with parts of my relationship, but some thing were working",
+          "value": "unhappy-partly"
+        },
+        {
+          "label": "I was generally happy with my relationship",
+          "value": "happy"
+        },
+        {
+          "label": "I’ve never been in a relationship",
+          "value": "never"
+        }
+      ],
+      "next": "partner-type",
+      "needContentReplacement": true
+    },
+    {
+      "id": "partner-type",
+      "answerId": "partnerType",
+      "question": "Is your partner an introvert or extrovert?",
+      "type": "single-choice",
+      "options": [
+        { "label": "Introvert", "value": "introvert" },
+        { "label": "Extrovert", "value": "extrovert" },
+        { "label": "A bit of both", "value": "both" }
+      ],
+      "next": "partner-gender",
+      "needContentReplacement": false
+    },
+    {
+      "id": "partner-gender",
+      "answerId": "partnerGender",
+      "question": "What is your partner’s gender?",
+      "type": "single-choice",
+      "options": [
+        { "label": "Male", "value": "male" },
+        { "label": "Female", "value": "female" }
+      ],
+      "next": "is-sex-priority",
+      "needContentReplacement": false
+    },
+    {
+      "id": "is-sex-priority",
+      "answerId": "isSexPriority",
+      "question": "Do you agree with the statement below?",
+      "description": "“My partner and I make sex a priority in our relationship”",
+      "type": "single-choice",
+      "options": [
+        { "label": "Strongly agree", "value": "strongly-agree" },
+        { "label": "Agree", "value": "agree" },
+        { "label": "Neutral", "value": "neutral" },
+        { "label": "Disagree", "value": "disagree" },
+        { "label": "Strongly disagree", "value": "strongly-disagree" }
+      ],
+      "next": "relationship-goals",
+      "needContentReplacement": false
+    },
+    {
+      "id": "relationship-goals",
+      "answerId": "isSimilarRelationshipGoals",
+      "question": "When you think about your relationship goals, you feel...?",
+      "type": "single-choice",
+      "options": [
+        {
+          "label": "Optimistic! They are totally doable, with some guidance.",
+          "value": "optimistic"
+        },
+        {
+          "label": "Cautious. I’ve struggled before, but I’m hopeful.",
+          "value": "cautious"
+        },
+        {
+          "label": "I’m feeling a little anxious, honestly.",
+          "value": "anxious"
+        }
+      ],
+      "next": "reference-question",
+      "needContentReplacement": false
+    },
+    {
+      "id": "reference-question",
+      "answerId": "referenceSource",
+      "question": "Where did you hear about us?",
+      "type": "single-choice",
+      "options": [
+        {
+          "label": "Poster or Billboard",
+          "value": "poster-billboard"
+        },
+        {
+          "label": "Friend or Family",
+          "value": "friend-family"
+        },
+        {
+          "label": "Instagram",
+          "value": "instagram"
+        },
+        {
+          "label": "Direct Mail or Package Insert",
+          "value": "direct-mail"
+        },
+        {
+          "label": "Online TV or Streaming TV",
+          "value": "online-streaming-tv"
+        },
+        {
+          "label": "TV",
+          "value": "tv"
+        },
+        {
+          "label": "Radio",
+          "value": "radio"
+        },
+        {
+          "label": "Search Engine (Google, Bing, etc.)",
+          "value": "search-engine"
+        },
+        {
+          "label": "Newspaper or Magazine",
+          "value": "newspaper-magazine"
+        },
+        {
+          "label": "Facebook",
+          "value": "facebook"
+        },
+        {
+          "label": "Blog Post or Website Review",
+          "value": "blog-post-website-review"
+        },
+        {
+          "label": "Podcast",
+          "value": "podcast"
+        },
+        {
+          "label": "Influencer",
+          "value": "influencer"
+        },
+        {
+          "label": "Youtube",
+          "value": "youtube"
+        },
+        {
+          "label": "Pinterest",
+          "value": "pinterest"
+        },
+        {
+          "label": "Other",
+          "value": "other"
+        }
+      ],
+      "next": null,
+      "needContentReplacement": false
+    }
+  ]
+}

@@ -1,4 +1,6 @@
+import { Button } from "@/components/ui/Button";
 import { Geist, Geist_Mono } from "next/font/google";
+import { useRouter } from "next/router";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,11 +13,19 @@ const geistMono = Geist_Mono({
 });
 
 export default function Home() {
+  const router = useRouter();
   return (
     <div
-      className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
+      className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen bg-[#FFF0F0] p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
     >
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start"></main>
+      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+        <h1 className="text-2xl text-[#333333] font-bold mb-6">
+          Lets start this journey together
+        </h1>
+        <Button onClick={() => router.push("/questionnaire/select-gender")}>
+          Start Questionnaire
+        </Button>
+      </main>
     </div>
   );
 }
